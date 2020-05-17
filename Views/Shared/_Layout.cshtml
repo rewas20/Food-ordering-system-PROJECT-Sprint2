@@ -23,6 +23,13 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li style="margin:12px;">
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                        {
+                        <input type="search" name="searchCategory" id="searchCategory" placeholder="Category..." />
+                        <input type="submit" value="Search">
+                        }
+                    </li>
                 </ul>
             </div>
         </div>

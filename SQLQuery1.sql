@@ -14,12 +14,4 @@ description nvarchar(max) not null,
 category_id int not null,
 CONSTRAINT FK_CategoryId FOREIGN KEY (category_id) REFERENCES Category(id)
 );
-insert into Category
-values('Mobiles',0)
-insert into Category
-values('Cares',0)
-insert into Category
-values('Bikes',0)
-insert into Category
-values('Scooters',0)
 
