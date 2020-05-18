@@ -48,5 +48,28 @@ namespace Food_ordering_system_PROJECT.Controllers
             }
             return View(category);
         }
+
+        // GET: Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Create
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "id,name,number_of_products")] Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Categories.Add(category);
+                db.SaveChanges();
+                return RedirectToAction("List");
+            }
+
+            return View(category);
+        }
+
     }
 }
