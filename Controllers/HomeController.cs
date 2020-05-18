@@ -54,5 +54,39 @@ namespace Food_ordering_system_PROJECT.Controllers
 
             return View();
         }
+        //<------------------------Add Product---------------------->//
+        //HttpGet for Update:-----------------
+        [HttpGet]
+        public ActionResult Add()
+        {
+            ViewBag.Category = db.Categories.ToList();
+            return View();
+        }
+        //HttpPost for Update:-----------------
+        [HttpPost]
+        public object Add(Product product, HttpPostedFileBase upload)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                String path = Path.Combine(Server.MapPath("~/Uploads"), upload.FileName);
+                upload.SaveAs(path);
+                product.image = upload.FileName;
+
+                db.Products.Add(product);
+                db.SaveChanges();
+                var add = db.Categories.SingleOrDefault(m => m.id == product.category_id);
+                add.number_of_products++;
+                db.Entry(add).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+            }
+
+
+            return RedirectToAction("Index");
+        }
+        //=========================================
+
     }
 }
