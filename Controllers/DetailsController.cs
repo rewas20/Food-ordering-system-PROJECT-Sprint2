@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,5 +26,59 @@ namespace Food_ordering_system_PROJECT.Controllers
                 return HttpNotFound();
             }
         }
+
+
+        //<------------------------Update Product---------------------->//
+        //HttpGet for Update:-----------------
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            var product = db.Products.SingleOrDefault(m => m.id == id);
+            if (product != null)
+            {
+
+                ViewBag.Product = product;
+                ViewBag.Category = db.Categories.ToList();
+                return View();
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+        //HttpPost for Update:-------------
+        [HttpPost]
+        public object Update(Product product, HttpPostedFileBase up)
+        {
+            var update = db.Products.SingleOrDefault(p => p.id == product.id);
+            if (ModelState.IsValid)
+            {
+
+                update.name = product.name;
+                update.price = product.price;
+                update.description = product.description;
+                update.category_id = product.category_id;
+                if (up != null)
+                {
+                    String path = Path.Combine(Server.MapPath("~/Uploads"), up.FileName);
+                    up.SaveAs(path);
+                    update.image = up.FileName;
+
+                }
+
+                db.Entry(update).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("Details/" + product.id);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+
+
+
+        }
     }
+
 }
