@@ -79,6 +79,63 @@ namespace Food_ordering_system_PROJECT.Controllers
 
 
         }
-    }
 
+        //<----------------------Delete Product------------------>//
+        //HttpGet for Delete:-----------
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var product = db.Products.Find(id);
+
+
+            if (product == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+
+                ViewBag.Product = product;
+                return View();
+            }
+        }
+        //HttpPost for Delete:--------------
+        [HttpPost, ActionName("Delete")]
+        public ActionResult Delete(Product product)
+        {
+            var remove = db.Products.Find(product.id);
+
+            if (remove == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    var category = db.Categories.SingleOrDefault(c => c.id == remove.category_id);
+                    if (category.number_of_products > 0)
+                    {
+                        category.number_of_products--;
+
+                        db.Entry(category).State = EntityState.Modified;
+                    }
+
+
+                    db.Products.Remove(remove);
+
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("Delete");
+        }
+     
+
+
+
+    }
 }
+
+
+
+
