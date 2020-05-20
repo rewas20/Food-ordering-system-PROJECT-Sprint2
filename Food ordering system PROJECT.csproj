@@ -229,6 +229,7 @@
     <Content Include="Views\Home\Add.cshtml" />
     <Content Include="Views\Categorys\Update.cshtml" />
     <Content Include="Views\Categorys\Create.cshtml" />
+    <Content Include="Views\Categorys\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
