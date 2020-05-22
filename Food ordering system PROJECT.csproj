@@ -140,7 +140,7 @@
     <Compile Include="App_Start\RouteConfig3.cs" />
     <Compile Include="App_Start\RouteConfig4.cs" />
     <Compile Include="App_Start\RouteConfig5.cs" />
-    <Compile Include="Controllers\CategorysController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,15 +227,15 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Add.cshtml" />
-    <Content Include="Views\Categorys\Update.cshtml" />
-    <Content Include="Views\Categorys\Create.cshtml" />
-    <Content Include="Views\Categorys\Delete.cshtml" />
-    <Content Include="Views\Categorys\List.cshtml" />
+    <Content Include="Views\Categories\Update.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\List.cshtml" />
+    <Content Include="Views\Details\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Uploads\" />
-    <Folder Include="Views\Details\" />
     <Folder Include="Views\ViewItemDetails\" />
   </ItemGroup>
   <ItemGroup>
