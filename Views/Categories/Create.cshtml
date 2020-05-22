@@ -12,9 +12,9 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
+        <hr />
 
-
-        @Html.ValidationSummary(true, "please enter all the field", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "please complete the field", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -22,9 +22,6 @@
                 @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
             </div>
         </div>
-
-
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-success" />

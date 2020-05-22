@@ -1,4 +1,5 @@
 ﻿using Food_ordering_system_PROJECT.Models;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,11 +19,9 @@ namespace Food_ordering_system_PROJECT.Controllers
         // GET: Categories
         public ActionResult List()
         {
-            var categories = View(db.Categories.Where(c => c.name != null).ToList());
-            if (categories != null)
-                return View(categories);
-            else
-                return RedirectToAction("Create");
+           
+                return View(db.Categories.Where(c => c.name != null));
+            
         }
         // GET: Update
         public ActionResult Update(int? id)
@@ -71,6 +70,7 @@ namespace Food_ordering_system_PROJECT.Controllers
                 db.SaveChanges();
                 return RedirectToAction("List");
             }
+            else
 
             return View(category);
         }
