@@ -233,6 +233,7 @@
     <Content Include="Views\Categories\List.cshtml" />
     <Content Include="Views\Details\Delete.cshtml" />
     <Content Include="Views\Details\Update.cshtml" />
+    <Content Include="Views\Details\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
