@@ -11,12 +11,16 @@ namespace Food_ordering_system_PROJECT.Controllers
     public class HomeController : Controller
     {
         private StoreEntities db = new StoreEntities();
+        private bool flagAdmin = false;
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Product =db.Products.ToList();
-            return View();
-        }
+            ViewBag.Product = db.Products.ToList();
+            if (flagAdmin == true) {
+                return View("Admin"); }
+            else {
+                return View();
+            } }
         [HttpPost]
         public ActionResult Index(String searchCategory)
         {
@@ -29,7 +33,7 @@ namespace Food_ordering_system_PROJECT.Controllers
             {
 
                 var product = db.Products.Where(p => p.Category.name.Contains(searchCategory)).ToList();
-                
+
                 if (product.Count == 0 || product.Count.Equals(null))
                 {
                     ViewBag.message = "No Result";
@@ -39,8 +43,11 @@ namespace Food_ordering_system_PROJECT.Controllers
 
             }
 
-            return View();
-        }
+            if (flagAdmin == true) {
+                return View("Admin"); }
+            else {
+                return View();
+            } }
 
      
         //<------------------------Add Product---------------------->//

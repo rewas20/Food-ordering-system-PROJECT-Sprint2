@@ -130,16 +130,20 @@
     <Compile Include="App_Start\BundleConfig3.cs" />
     <Compile Include="App_Start\BundleConfig4.cs" />
     <Compile Include="App_Start\BundleConfig5.cs" />
+    <Compile Include="App_Start\BundleConfig6.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\FilterConfig2.cs" />
     <Compile Include="App_Start\FilterConfig3.cs" />
     <Compile Include="App_Start\FilterConfig4.cs" />
     <Compile Include="App_Start\FilterConfig5.cs" />
+    <Compile Include="App_Start\FilterConfig6.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\RouteConfig2.cs" />
     <Compile Include="App_Start\RouteConfig3.cs" />
     <Compile Include="App_Start\RouteConfig4.cs" />
     <Compile Include="App_Start\RouteConfig5.cs" />
+    <Compile Include="App_Start\RouteConfig6.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -225,7 +229,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Home\Add.cshtml" />
     <Content Include="Views\Categories\Update.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
@@ -238,6 +242,7 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Uploads\" />
+    <Folder Include="Views\Cart\" />
     <Folder Include="Views\ViewItemDetails\" />
   </ItemGroup>
   <ItemGroup>
