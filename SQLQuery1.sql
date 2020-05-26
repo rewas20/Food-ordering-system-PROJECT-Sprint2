@@ -15,3 +15,12 @@ category_id int not null,
 CONSTRAINT FK_CategoryId FOREIGN KEY (category_id) REFERENCES Category(id)
 );
 
+CREATE TABLE Cart (
+    item_id INT primary key,
+    product_id int not null,
+    added_at   DATETIME NULL,
+    userId  INT    NULL,
+    countProduct int default 1,
+    CONSTRAINT FK_ProductId FOREIGN KEY (product_id) REFERENCES Product(id),
+	
+);
