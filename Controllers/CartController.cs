@@ -32,4 +32,19 @@ namespace Food_ordering_system_PROJECT.Controllers
 
         return RedirectToAction("Index");
     }
+    public ActionResult DeleteProduct(int? id)
+    {
+        var product = db.Carts.SingleOrDefault(c => c.product_id == id); ;
+
+        if (product == null || id == null)
+        {
+            return RedirectToAction("Index", "Cart");
+        }
+
+        db.Carts.Remove(product);
+        db.SaveChanges();
+
+        return RedirectToAction("DeleteProduct");
+    }
+
 }
