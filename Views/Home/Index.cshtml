@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Food_ordering_system_PROJECT.Models.Product>
+
+@{
+    ViewBag.Title = "Home Page";
+    String message = ViewBag.message;
+}
+<head>
+
+
+    <style>
+
+
+        * {
+            box-sizing: border-box;
+        }
+        /* Float four columns side by side */
+        .column {
+            float: left;
+            width: 25%;
+            padding: 0 10px;
+            margin-bottom: 40px;
+        }
+        /* Remove extra left and right margins, due to padding */
+        .row {
+            margin: 30px -5px;
+        }
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        /* Style the counter cards */
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            text-align: left;
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    
+    <div style="margin-top:30px">
+        <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal">View Cart</button>
+    </div>
+    <div class="row">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <div class="column">
+                    <div class="card">
+
+                        <img src="~/Uploads/@Html.Encode(item.image)" style=" width: 245px;height: 220px;" />
+                        <h4>@item.name</h4>
+                        <h4>@item.price</h4>
+
+                        <div style="width:1150px;height:60px;overflow:auto">
+                            <p>@item.description</p>
+                        </div>
+                        <h3 style="color:aqua;font-family:'Arial Rounded MT';text-align:center"> <span class="btn btn-danger">@Html.ActionLink("Add to cart", "Addtocart", new { id = item.id })</span></h3>
+                    </div>
+                </div>
+
+            }
+        }
+
+        <div>
+            <h1>@message</h1>
+        </div>
+    </div>
+</body>
+

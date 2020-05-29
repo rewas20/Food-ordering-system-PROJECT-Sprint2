@@ -19,7 +19,8 @@ namespace Food_ordering_system_PROJECT.Controllers
             if (flagAdmin == true) {
                 return View("Admin"); }
             else {
-                return View();
+                ViewBag.Cart = db.Carts.ToList();
+                return View(db.Products.OrderByDescending(x => x.id));
             } }
         [HttpPost]
         public ActionResult Index(String searchCategory)
@@ -46,7 +47,8 @@ namespace Food_ordering_system_PROJECT.Controllers
             if (flagAdmin == true) {
                 return View("Admin"); }
             else {
-                return View();
+                ViewBag.Cart = db.Carts.ToList();
+                return View(db.Products.OrderByDescending(x => x.id));
             } }
 
      
