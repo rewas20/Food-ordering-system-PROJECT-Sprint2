@@ -85,6 +85,18 @@ namespace Food_ordering_system_PROJECT.Controllers
             return RedirectToAction("Index");
         }
         //=========================================
-
+        public ActionResult DetailsProduct(int id)
+        {
+            var product = db.Products.Find(id);
+            if (product != null)
+            {
+                ViewBag.Product = product;
+                return View();
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
     }
 }
