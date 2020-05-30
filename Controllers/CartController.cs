@@ -15,17 +15,24 @@ namespace Food_ordering_system_PROJECT.Controllers
         // GET: Cart
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index","Home");
         }
         public ActionResult Addtocart(int id)
         {
-            var search = db.Carts.Find(id);
+            var search = db.Carts.SingleOrDefault(c => c.product_id == id);
             if (search == null)
             {
+                
                 Cart cart = new Cart();
                 cart.product_id = id;
                 cart.added_at = DateTime.Now;
                 db.Carts.Add(cart);
+                db.SaveChanges();
+            }
+            else
+            {
+                search.countProduct++;
+                db.Entry(search).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
 

@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="item_id" />
           </Key>
-          <Property Name="item_id" Type="int" Nullable="false" />
+          <Property Name="item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="product_id" Type="int" Nullable="false" />
           <Property Name="added_at" Type="datetime" />
           <Property Name="userId" Type="int" />
