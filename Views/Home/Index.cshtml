@@ -44,35 +44,52 @@
     </style>
 </head>
 <body>
-    
-    <div style="margin-top:30px">
-        <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal">View Cart</button>
-    </div>
-    <div class="row">
-        @if (Model != null)
-        {
-            foreach (var item in Model)
-            {
-                <div class="column">
-                    <div class="card">
+    <div class="container">
 
-                        <img src="~/Uploads/@Html.Encode(item.image)" style=" width: 245px;height: 220px;" />
-                        <h4>@item.name</h4>
-                        <h4>@item.price</h4>
 
-                        <div style="width:1150px;height:60px;overflow:auto">
-                            <p>@item.description</p>
-                        </div>
-                        <h3 style="color:aqua;font-family:'Arial Rounded MT';text-align:center"> <span class="btn btn-danger">@Html.ActionLink("Add to cart", "Addtocart", new { id = item.id })</span></h3>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title" style="color:crimson;text-align:center">Your Cart</h3>
                     </div>
-                </div>
+                    <div class="modal-body">
+                       
+                        </div>
 
-            }
-        }
+                    <div style="margin-top:30px">
+                        <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal">View Cart</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btnbtn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div></div></div></div>
+                        <div class="row">
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <div class="column">
+                                        <div class="card">
 
-        <div>
-            <h1>@message</h1>
-        </div>
-    </div>
+                                            <img src="~/Uploads/@Html.Encode(item.image)" style=" width: 245px;height: 220px;" />
+                                            <h4>@item.name</h4>
+                                            <h4>@item.price</h4>
+
+                                            <div style="width:1150px;height:60px;overflow:auto">
+                                                <p>@item.description</p>
+                                            </div>
+                                            <h3 style="color:aqua;font-family:'Arial Rounded MT';text-align:center"> <span class="btn btn-danger">@Html.ActionLink("Add to cart", "Addtocart", new { id = item.id })</span></h3>
+                                        </div>
+                                    </div>
+
+                                }
+                            }
+
+                            <div>
+                                <h1>@message</h1>
+                            </div>
+                        </div>
 </body>
 
