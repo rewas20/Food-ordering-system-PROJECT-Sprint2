@@ -11,17 +11,22 @@ namespace Food_ordering_system_PROJECT.Controllers
     public class HomeController : Controller
     {
         private StoreEntities db = new StoreEntities();
-        private bool flagAdmin = false;
+        static private bool flagAdmin;
+
         [HttpGet]
         public ActionResult Index()
         {
             ViewBag.Product = db.Products.ToList();
-            if (flagAdmin == true) {
-                return View("Admin"); }
-            else {
+            if (flagAdmin == true)
+            {
+                return View("Admin");
+            }
+            else
+            {
                 ViewBag.Cart = db.Carts.ToList();
                 return View(db.Products.OrderByDescending(x => x.id));
-            } }
+            }
+        }
         [HttpPost]
         public ActionResult Index(String searchCategory)
         {
@@ -44,14 +49,18 @@ namespace Food_ordering_system_PROJECT.Controllers
 
             }
 
-            if (flagAdmin == true) {
-                return View("Admin"); }
-            else {
+            if (flagAdmin == true)
+            {
+                return View("Admin");
+            }
+            else
+            {
                 ViewBag.Cart = db.Carts.ToList();
                 return View(db.Products.OrderByDescending(x => x.id));
-            } }
+            }
+        }
 
-     
+
         //<------------------------Add Product---------------------->//
         //HttpGet for Update:-----------------
         [HttpGet]
@@ -97,6 +106,29 @@ namespace Food_ordering_system_PROJECT.Controllers
             {
                 return HttpNotFound();
             }
+        }
+        
+        
+        public ActionResult SetAdministration()
+        {
+
+            if (flagAdmin == true)
+            {
+                flagAdmin = false;
+            }
+            else
+            {
+                flagAdmin = true;
+            }
+           return RedirectToAction("Index");
+            
+        }
+
+        public bool GetAdministration()
+        {
+
+            return flagAdmin;
+
         }
     }
 }

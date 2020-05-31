@@ -13,6 +13,21 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    @{
+    String Button = "";
+    Food_ordering_system_PROJECT.Controllers.HomeController controller = new Food_ordering_system_PROJECT.Controllers.HomeController();
+    bool flag = controller.GetAdministration();
+    if (flag == true)
+    {
+
+        Button = "Make me a User";
+    }
+    else if (flag == false)
+    {
+        Button = "Make me Admin";
+    }
+
+}
 
 </head>
 <body>
@@ -24,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -37,7 +52,14 @@
                         }
 
                     </li>
-         
+                    <li>
+
+                        <div style="margin-top:10px;">
+                            <a href="~/Home/SetAdministration"><button type="button" class="btn btn-success">@Button</button></a>
+                        </div>
+
+                    </li>
+
                 </ul>
 
             </div>
