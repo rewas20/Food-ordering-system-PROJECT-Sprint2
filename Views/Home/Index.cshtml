@@ -55,6 +55,50 @@
                         <h3 class="modal-title" style="color:crimson;text-align:center">Your Cart</h3>
                     </div>
                     <div class="modal-body">
+                        @foreach (Food_ordering_system_PROJECT.Models.Cart item in ViewBag.Cart)
+                        {
+                            <div style="border:1px solid #0026ff ;margin-bottom:4px">
+                                <p style="margin-left:10px ;margin-top:5px ">
+                                    <img src="~/Uploads/@Html.Encode(item.Product.image)" style="width: 10% ;height: 10%" /> @item.Product.name - @item.Product.price
+
+                                    <button class="btn btn-sm">
+                                        @Html.ActionLink("Delete", "DeleteProduct", "Cart", new { id = item.Product.id }, null)
+                                    </button>
+
+                                </p>
+                                <div>
+                                    @{ var dateCart = item.added_at.Value;
+                                        var sec = (DateTime.Now - dateCart).Seconds;
+                                        var mint = (DateTime.Now - dateCart).Minutes;
+                                        var hours = (DateTime.Now - dateCart).Hours;
+                                        var days = (DateTime.Now - dateCart).Days;
+                                    }
+                                    @if (days > 1)
+                                    {
+                                        <p style="margin-left:10px;color:darkblue"> Added : @days Days ago</p>
+                                    }
+                                    else if (hours > 1)
+                                    {
+                                        <p style="margin-left:10px;color:darkblue"> Added :  @hours Hours ago</p>
+                                    }
+                                    else if (mint > 1)
+                                    {
+                                        <p style="margin-left:10px;color:darkblue"> Added :  @mint Minutes ago</p>
+                                    }
+                                    else
+                                    {
+                                        <p style="margin-left:10px;color:darkblue"> Added :@sec Seconds ago</p>
+                                    }
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        }
+                        <button type="button" class="btnbtn-default" data-dismiss="modal">Checkout</button>
 
                     </div>
 
